@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_example/providers/counter_provider.dart';
 import 'package:flutter_provider_example/view/counter_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
       MultiProvider(
-          providers: [],
+          providers: [
+            ChangeNotifierProvider(create: (context) => CounterProvider())
+          ],
           child: const MyApp(),
       )
   );
@@ -38,7 +41,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const CounterView(),
+      initialRoute: "/",
+      routes: {
+        "/" : (context) => CounterView(),
+      },
     );
   }
 }
