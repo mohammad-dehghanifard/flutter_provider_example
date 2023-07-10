@@ -8,7 +8,6 @@ class TodoService{
     const endPoint = "https://jsonplaceholder.typicode.com/todos";
     final uri = Uri.parse(endPoint);
     final response = await http.get(uri);
-
     if(response.statusCode == 200){
     final json = jsonDecode(response.body) as List ;
     final List<TodoModel> todoList = [];
