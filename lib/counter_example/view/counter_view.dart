@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_example/providers/counter_provider.dart';
 import 'package:provider/provider.dart';
+import '../providers/counter_provider.dart';
 
 class CounterView extends StatelessWidget {
-  CounterView({super.key});
-  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+   CounterView({super.key});
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class CounterView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-           Text(context.watch<CounterProvider>().number,style: const TextStyle(fontSize: 32,fontWeight: FontWeight.bold)),
+           Text(context.watch<CounterProvider>().number.toString(),style: const TextStyle(fontSize: 32,fontWeight: FontWeight.bold)),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -32,7 +32,7 @@ class CounterView extends StatelessWidget {
                   style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll(Colors.amber),
                   ),
-                    onPressed: () => context.read<CounterProvider>().increaseNumber(),
+                    onPressed: () => _key.currentState!.context.read<CounterProvider>().increaseNumber(),
                     child: const Icon(Icons.add,color: Colors.black)),
                 ElevatedButton(
                   style: const ButtonStyle(
