@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/" : (context) => CounterView(),
+        "/apiCall" : (context) => CounterView(),
       },
     );
   }
